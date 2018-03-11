@@ -1,0 +1,12 @@
+{
+  "name": "insightful-chain",
+  "version": "1.0.0",
+  "description": "extract insights from blockchains",
+  "main": "index.js",
+  "repository": "https://github.com/liukai/insightful-chain",
+  "author": "Kai Liu",
+  "license": "MIT",
+  "dependencies": {
+    "web3": "^1.0.0-beta.30"
+  }
+}
