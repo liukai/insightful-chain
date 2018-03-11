@@ -7,6 +7,9 @@
   "author": "Kai Liu",
   "license": "MIT",
   "dependencies": {
+    "build-url": "^1.0.10",
+    "commander": "^2.15.0",
+    "csv-write-stream": "^2.0.0",
     "web3": "^1.0.0-beta.30"
   }
 }
