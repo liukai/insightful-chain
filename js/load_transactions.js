@@ -22,6 +22,7 @@ function constructUrl(address, action, apikey, params = {}) {
   });
 }
 
+// read all the transactions from Etherscan
 function fetchTransactions(address, action, apikey, outputFilename) {
   const writer = csvWriter();
   writer.pipe(fs.createWriteStream(outputFilename));
@@ -30,10 +31,12 @@ function fetchTransactions(address, action, apikey, outputFilename) {
   let page = 1; // important, the page starts from 1
   const offset = 5000;
 
+  // TODO(kai) Etherscan has rate limit of 5 req/sec. Should add a rate limiter on
+  // our side.
   const handleComplete = data => {
     const txs = JSON.parse(data).result;
 
-    if (txs.length > 0 && page < 5) {
+    if (txs.length > 0) {
       txs.forEach(tx => writer.write(tx));
       page += 1;
       readFromEtherscan(address, action, apikey, handleComplete, {
